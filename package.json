@@ -1,0 +1,17 @@
+{
+  "name": "slackbot2000",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon slackbot2000.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/bolt": "^3.10.0",
+    "axios": "^0.26.0",
+    "dotenv": "^16.0.0",
+    "twilio": "^3.75.0"
+  }
+}
