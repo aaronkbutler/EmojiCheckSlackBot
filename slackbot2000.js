@@ -33,10 +33,34 @@ async function sendMessages(phoneNumbers, jsonData) {
 app.message(async ({ message, say }) => {
   //console.log(message);
   if(message.channel !== channelIds.badVibez) {
+  //    console.log(message.text);
+      if(message.text.includes(":b:")) {
+          try {
+              await app.client.reactions.add({ token: process.env.SLACK_BOT_TOKEN, channel: message.channel, name: "b", timestamp: message.ts});
+          } catch (error) {
+              console.log(error);
+          }
+      }
+      if(message.text.toLowerCase().includes("bagel")) {
+         try {
+             await app.client.reactions.add({ token: process.env.SLACK_BOT_TOKEN, channel: message.channel, name: "bageling", timestamp: message.ts});
+         } catch (error) {
+             console.log(error);
+         }
+      }
+      if(message.text.toLowerCase().includes("butt")) {
+         try {
+             await app.client.reactions.add({ token: process.env.SLACK_BOT_TOKEN, channel: message.channel, name: "peach", timestamp: message.ts});
+         } catch (error) {
+             console.log(error);
+         }
+      }
       for (const emoji of EmojiTranslate.translate(message.text, true)) {
-          console.log("Emoji: " + emoji + ".");
-	  if (emoji !== '' && emoji.length > 1) {
-              try {
+          //console.log("Emoji: " + emoji + ".");
+	  if (emoji !== '' /*&& emoji.length > 1*/) {
+              //console.log(emoji);
+	      try {
+		//console.log(emoji);
                 await app.client.reactions.add({ token: process.env.SLACK_BOT_TOKEN, channel: message.channel, name: emoji.toLowerCase(), timestamp: message.ts});
               } catch (error) {
                   console.log(error);

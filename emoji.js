@@ -24,10 +24,17 @@ function isMaybeAlreadyAnEmoji(word) {
  * @returns {Array} The list of emoji translations or '' if none exist.
  */
 function getAllEmojiForWord(originalWord) {
+  // Go through all the things and find the first one that matches.
+  let useful = [];
+
   let word = originalWord.trim().toLowerCase();
 
   if (!word || word === '' || word === 'a' || word === 'it' || word === 'is')
     return '';
+
+  if (word.length == 1) {
+    useful.push(word);
+  }
 
   // Maybe this is a plural word but the word is the singular?
   // Don't do it for two letter words since "as" would become "a" etc.
@@ -54,51 +61,80 @@ function getAllEmojiForWord(originalWord) {
     maybeVerbedDoubled = verb.substr(0, verb.length - 1);
   }
 
-  // Go through all the things and find the first one that matches.
-  let useful = [];
-
   // If this is already an emoji, don't try to translate it.
-  if (isMaybeAlreadyAnEmoji(word)) {
+  /*if (isMaybeAlreadyAnEmoji(word)) {
     useful.push(word);
     return useful;
-  }
+  }*/
 
   // If it's "i" or "i", add some faces to it.
   if (word === 'i' || word === 'you') {
-    useful.push('😀');
-    useful.push('😊');
+    useful.push('smile');
+    useful.push('smiley');
   } else if (word === 'she'){
-    useful.push('💁');
+    useful.push('woman-tipping-hand');
   } else if (word === 'he'){
-    useful.push('💁‍♂️');
+    useful.push('man-tipping-hand');
   } else if (word === 'we' || word === 'they') {
-    useful.push('👩‍👩‍👦‍👦');
-  } else if (word === 'am' || word === 'is' || word === 'are') {
-    useful.push('👉');
-  } else if (word === 'thanks') {
-    useful.push('🙌');
+    useful.push('woman-woman-girl-boy');
+  }/* else if (word === 'am' || word === 'is' || word === 'are') {
+    useful.push('point_right');
+  }*/ else if (word === 'thanks') {
+    useful.push('raised_hands');
+  } else if (word === 'love') {
+      useful.push('heart');
   }
 
   for (let emoji in allEmoji) {
     let words = allEmoji[emoji].keywords;
     // TODO: omg refactor this one day, please. Why is this even. Why.
-    if (word == allEmoji[emoji].char ||
-        emoji == word || (emoji == word + '_face') ||
-        emoji == maybeSingular || emoji == maybePlural ||
-        emoji == maybeVerbedSimple || emoji == maybeVerbedVowel || emoji == maybeVerbedDoubled ||
-        (words && words.indexOf(word) >= 0) ||
-        (words && words.indexOf(maybeSingular) >= 0) ||
-        (words && words.indexOf(maybePlural) >= 0) ||
-        (words && words.indexOf(maybeVerbedSimple) >= 0) ||
-        (words && words.indexOf(maybeVerbedVowel) >= 0) ||
-        (words && words.indexOf(maybeVerbedDoubled) >= 0)) {
-      // If it's a two letter word that got translated to a flag, it's 99% of the
-      // time incorrect, so stop doing that.
-      if (!(word.length <= 3 && allEmoji[emoji].category == 'flags')) {
-        useful.push(allEmoji[emoji].char);
-      }
+    if (word == allEmoji[emoji].char) {
+        //useful.push(word);
     }
+    if (emoji == word) {
+        useful.push(word);
+    }
+    if (emoji == word + '_face') {
+        useful.push(word + '_face');
+    }
+    if (emoji == maybeSingular) {
+        useful.push(maybeSingular);
+    }
+    if (emoji == maybePlural) {
+        useful.push(maybePlural);
+    }
+    if (emoji == maybeVerbedSimple) {
+        useful.push(maybeVerbedSimple);
+    }
+    if (emoji == maybeVerbedDoubled) {
+        useful.push(maybeVerbedDoubled);
+    }
+    if (words && words.indexOf(word) >= 0) {
+        useful.push(emoji);
+    }
+    if (words && words.indexOf(maybeSingular) >= 0) {
+        useful.push(emoji);
+    }
+    if (words && words.indexOf(maybePlural) >= 0) {
+        useful.push(emoji);
+    }
+    if (words && words.indexOf(maybeVerbedSimple) >= 0) {
+        useful.push(emoji);
+    }
+    if (words && words.indexOf(maybeVerbedVowel) >= 0) {
+        useful.push(emoji);
+    }
+    if (words && words.indexOf(maybeVerbedDoubled) >= 0) {
+        useful.push(emoji);
+    }
+
+    // If it's a two letter word that got translated to a flag, it's 99% of the
+    // time incorrect, so stop doing that.
+    // if (!(word.length <= 3 && allEmoji[emoji].category == 'flags')) {
+    //     //useful.push(allEmoji[emoji].char);
+    // }
   }
+  //console.log(useful);
   return (useful.length === 0) ? '' : useful;
 }
 
@@ -109,6 +145,7 @@ function getAllEmojiForWord(originalWord) {
  */
 function getEmojiForWord(word) {
   let translations = getAllEmojiForWord(word);
+  //console.log(translations);
   return translations[Math.floor(Math.random() * translations.length)];
 }
 
@@ -189,11 +226,14 @@ const translate = function translate(sentence, onlyEmoji) {
 
     let translated = getEmojiForWord(word);
     if (translated) {
-      translation += firstSymbol + word + lastSymbol + ' ';
+      translation += firstSymbol + translated + lastSymbol + ' ';
+          console.log(translation);
     } else if (!onlyEmoji){
       //translation += firstSymbol + word + lastSymbol +  ' '
     }
+
   }
+  console.log(translation.split(' '));
   return translation.split(' ');
 }
 
@@ -17788,3 +17828,4 @@ function getOrdered() {
 }
 
 module.exports.translate = translate;
+translate("it is cold and hot outside", true);
