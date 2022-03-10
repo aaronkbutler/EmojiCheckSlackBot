@@ -1,4 +1,4 @@
-//https://meowni.ca/emoji-translate/
+// Modified from https://meowni.ca/emoji-translate/
 
 const emojilib = getExports();
 const SYMBOLS = '!"#$%&\'()*+,-./:;<=>?@[]^_`{|}~';
@@ -4631,7 +4631,8 @@ function getEmojiData() {
                 "medicine",
                 "weed",
                 "grass",
-                "lawn"
+                "lawn",
+                "kush"
             ],
             "char": "🌿",
             "fitzpatrick_scale": false,
@@ -5521,7 +5522,10 @@ function getEmojiData() {
             "keywords": [
                 "fruit",
                 "nature",
-                "food"
+                "food",
+                "butt",
+                "butter",
+                "booty"
             ],
             "char": "🍑",
             "fitzpatrick_scale": false,
@@ -5571,7 +5575,13 @@ function getEmojiData() {
                 "vegetable",
                 "nature",
                 "food",
-                "aubergine"
+                "aubergine",
+                "penis",
+                "dick",
+                "cock",
+                "johnson",
+                "shaft",
+                "avi"
             ],
             "char": "🍆",
             "fitzpatrick_scale": false,
@@ -6138,7 +6148,8 @@ function getEmojiData() {
                 "pub",
                 "summer",
                 "alcohol",
-                "booze"
+                "booze",
+                "hershey"
             ],
             "char": "🍺",
             "fitzpatrick_scale": false,
@@ -10751,7 +10762,6 @@ function getEmojiData() {
             "keywords": [
                 "orange-square",
                 "chinese",
-                "have",
                 "kanji"
             ],
             "char": "🈶",
@@ -10825,12 +10835,9 @@ function getEmojiData() {
         },
         "accept": {
             "keywords": [
-                "ok",
-                "good",
                 "chinese",
                 "kanji",
                 "agree",
-                "yes",
                 "orange-circle"
             ],
             "char": "🉑",
@@ -10851,7 +10858,6 @@ function getEmojiData() {
                 "chinese",
                 "kanji",
                 "obtain",
-                "get",
                 "circle"
             ],
             "char": "🉐",
@@ -15359,14 +15365,16 @@ function getEmojiData() {
             "fitzpatrick_scale": false,
             "category": "flags"
         },
-        "ru": {
+        "flag-ru": {
             "keywords": [
                 "russian",
                 "federation",
                 "flag",
                 "nation",
                 "country",
-                "banner"
+                "banner",
+                "russia",
+                "putin"
             ],
             "char": "🇷🇺",
             "fitzpatrick_scale": false,
@@ -15979,13 +15987,14 @@ function getEmojiData() {
             "fitzpatrick_scale": false,
             "category": "flags"
         },
-        "ukraine": {
+        "flag-ua": {
             "keywords": [
                 "ua",
                 "flag",
                 "nation",
                 "country",
-                "banner"
+                "banner",
+                "ukraine"
             ],
             "char": "🇺🇦",
             "fitzpatrick_scale": false,
@@ -16027,7 +16036,7 @@ function getEmojiData() {
             "fitzpatrick_scale": false,
             "category": "flags"
         },
-        "us": {
+        "flag-us": {
             "keywords": [
                 "united",
                 "states",
@@ -16035,7 +16044,8 @@ function getEmojiData() {
                 "flag",
                 "nation",
                 "country",
-                "banner"
+                "banner",
+                "usa"
             ],
             "char": "🇺🇸",
             "fitzpatrick_scale": false,
@@ -16349,6 +16359,17 @@ function getEmojiData() {
                 "doom",
                 "oldschool",
                 "custom_"
+            ],
+            "char": null,
+            "fitzpatrick_scale": false,
+            "category": "_custom"
+        },
+        "mermaid": {
+            "keywords": [
+                "raquel",
+                "ocean",
+                "sea",
+                "mystery"
             ],
             "char": null,
             "fitzpatrick_scale": false,
@@ -17822,7 +17843,8 @@ function getOrdered() {
         "rage3",
         "rage4",
         "suspect",
-        "hurtrealbad"
+        "hurtrealbad",
+        "mermaid"
     ];
     return ordered;
 }

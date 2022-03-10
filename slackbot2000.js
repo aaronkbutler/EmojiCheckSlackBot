@@ -34,23 +34,9 @@ app.message(async ({ message, say }) => {
   //console.log(message);
   if(message.channel !== channelIds.badVibez) {
   //    console.log(message.text);
-      if(message.text.includes(":b:")) {
-          try {
-              await app.client.reactions.add({ token: process.env.SLACK_BOT_TOKEN, channel: message.channel, name: "b", timestamp: message.ts});
-          } catch (error) {
-              console.log(error);
-          }
-      }
       if(message.text.toLowerCase().includes("bagel")) {
          try {
              await app.client.reactions.add({ token: process.env.SLACK_BOT_TOKEN, channel: message.channel, name: "bageling", timestamp: message.ts});
-         } catch (error) {
-             console.log(error);
-         }
-      }
-      if(message.text.toLowerCase().includes("butt")) {
-         try {
-             await app.client.reactions.add({ token: process.env.SLACK_BOT_TOKEN, channel: message.channel, name: "peach", timestamp: message.ts});
          } catch (error) {
              console.log(error);
          }
