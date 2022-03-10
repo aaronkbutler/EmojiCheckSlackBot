@@ -1,4 +1,4 @@
-// Modified from https://meowni.ca/emoji-translate/
+// Modified from https://github.com/notwaldorf/emoji-translate
 
 const emojilib = getExports();
 const SYMBOLS = '!"#$%&\'()*+,-./:;<=>?@[]^_`{|}~';
