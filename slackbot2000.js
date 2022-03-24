@@ -41,6 +41,13 @@ app.message(async ({ message, say }) => {
              console.log(error);
          }
       }
+      if(message.text.toLowerCase().includes("chabad")) {
+         try {
+             await app.client.reactions.add({ token: process.env.SLACK_BOT_TOKEN, channel: message.channel, name: "rebbe", timestamp: message.ts});
+         } catch (error) {
+             console.log(error);
+         }
+      }
       for (const emoji of EmojiTranslate.translate(message.text, true)) {
           //console.log("Emoji: " + emoji + ".");
 	  if (emoji !== '' /*&& emoji.length > 1*/) {
